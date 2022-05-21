@@ -1,3 +1,6 @@
+let a;
+let b;
+
 function add(a, b) {
     return a + b;
 }

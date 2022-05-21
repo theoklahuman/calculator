@@ -4,7 +4,37 @@ button {
 }
 
 #container {
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     max-width: 160px;
 }
+
+.digits {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 120px;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+.equal-and-clear-buttons {
+    display: flex;
+}
+
+#zero-button {
+    width: 80px;
+    text-align: start;
+}
+
+#equal-sign {
+    width: 120px;
+}
+
+#clear-button {
+    background-color: magenta;
+}
+
