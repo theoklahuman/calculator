@@ -1,6 +1,7 @@
 button {
     width: 60px;
     height: 60px;
+    background-color: aqua;
 }
 
 #display {
@@ -26,6 +27,7 @@ button {
     flex-wrap: wrap;
     max-width: 180px;
     max-height: 240px;
+    background-color: inherit;
 }
 
 .operators {
