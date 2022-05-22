@@ -19,7 +19,12 @@ function subtract(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
+    if (secondNumber == 0) {
+        return "ERROR!";
+    } else {
+        return firstNumber / secondNumber;
+    }
+    
 }
 
 function multiply(firstNumber, secondNumber) {
@@ -47,22 +52,18 @@ digits.addEventListener("click", function(event) {
 operators.addEventListener("click", function(event) {
         if (event.target.id == "addition") {
             operator = add;
-            display.innerText = "0";
             firstNumber = +displayed;
             displayed = "";
         } else if (event.target.id == "subtraction") {
             operator = subtract;
-            display.innerText = "0";
             firstNumber = displayed;
             displayed = "";
         } else if (event.target.id == "multiplication") {
             operator = multiply;
-            display.innerText = "0";
             firstNumber = displayed;
             displayed = "";
         } else if (event.target.id == "division") {
             operator = divide;
-            display.innerText = "0";
             firstNumber = displayed;
             displayed = "";
         };
