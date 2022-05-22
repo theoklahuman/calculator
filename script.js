@@ -1,5 +1,6 @@
-let a;
-let b;
+let firstNumber;
+let secondNumber;
+let operator;
 let displayed = "";
 
 
@@ -7,33 +8,33 @@ const display = document.querySelector("#display");
 const digits = document.querySelector(".digits");
 const buttons = document.querySelectorAll("button");
 const operators = document.querySelector(".operators");
-const equal = document.querySelector("#equal");
+const clear = document.querySelector("#clear");
 
-function add(a, b) {
-    return a + b;
+function add(firstNumber, secondNumber) {
+    return firstNumber + secondNumber;
 }
 
-function subtract(a, b) {
-    return a - b;
+function subtract(firstNumber, secondNumber) {
+    return firstNumber - secondNumber;
 }
 
-function divide(a, b) {
-    return a / b;
+function divide(firstNumber, secondNumber) {
+    return firstNumber / secondNumber;
 }
 
-function multiply(a, b) {
-    return a * b;
+function multiply(firstNumber, secondNumber) {
+    return firstNumber * secondNumber;
 }
 
-function operate(a, b, operator) {
+function operate(operator, firstNumber, secondNumber) {
     if (operator == add) {
-        return add(a, b);
+        return add(firstNumber, secondNumber);
     } else if (operator == subtract) {
-        return subtract(a, b)
+        return subtract(firstNumber, secondNumber)
     } else if (operator == multiply) {
-        return multiply(a, b);
+        return multiply(firstNumber, secondNumber);
     } else if (operator == divide) {
-        return divide(a, b);
+        return divide(firstNumber, secondNumber);
     }
 }
 
@@ -44,7 +45,40 @@ digits.addEventListener("click", function(event) {
 })
 
 operators.addEventListener("click", function(event) {
-    display.innerText = "0";
-    a = displayed;
-    displayed = "";
+        if (event.target.id == "addition") {
+            operator = add;
+            display.innerText = "0";
+            firstNumber = +displayed;
+            displayed = "";
+        } else if (event.target.id == "subtraction") {
+            operator = subtract;
+            display.innerText = "0";
+            firstNumber = displayed;
+            displayed = "";
+        } else if (event.target.id == "multiplication") {
+            operator = multiply;
+            display.innerText = "0";
+            firstNumber = displayed;
+            displayed = "";
+        } else if (event.target.id == "division") {
+            operator = divide;
+            display.innerText = "0";
+            firstNumber = displayed;
+            displayed = "";
+        };
+    })
+
+
+    
+equal.addEventListener("click", function(event) {
+    secondNumber = +displayed;
+    display.innerHTML = operate(operator, firstNumber, secondNumber);
+    
 })
+
+function defaultDisplay() {
+    display.innerText = "0";
+    displayed = "";
+}
+
+clear.addEventListener("click", defaultDisplay);

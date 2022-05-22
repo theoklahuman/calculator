@@ -3,6 +3,7 @@ button {
     height: 40px;
 }
 
+
 #container {
     margin-top: 10px;
     display: flex;
@@ -25,15 +26,21 @@ button {
     display: flex;
 }
 
+#multiplication, #addition, #subtraction, #division {
+    background-color: magenta;
+}
+
 #zero {
     width: 80px;
     text-align: start;
 }
 
-#equal-sign {
+#equal {
     width: 120px;
+    background-color: coral;
 }
 
-#clear-button {
-    background-color: magenta;
+#clear {
+    background-color: rgb(173, 32, 32);
+    color: white;
 }
