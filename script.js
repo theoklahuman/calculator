@@ -74,6 +74,7 @@ operators.addEventListener("click", function(event) {
 equal.addEventListener("click", function(event) {
     secondNumber = +displayed;
     display.innerHTML = operate(operator, firstNumber, secondNumber);
+    displayed = display.innerHTML;
     
 })
 
