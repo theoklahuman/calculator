@@ -1,60 +1,59 @@
-button {
-    width: 60px;
-    height: 60px;
-    background-color: aqua;
-}
-
-#display {
-    width: 240px;
-    height: 60px;
-    text-align: end;
-    font-size: 50px;
-    background-color: rgb(245, 181, 181);
+* {
+    box-sizing: border-box;
 }
 
 #container {
-    margin-top: 75px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    max-width: 240px;
-    border: solid 5px;
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 95vw;
+    /* border: black solid 5px; */
+}
+
+#display {
+    width: 100%;
+    height: 4rem;
+    padding-right: 0.3rem;
+    text-align: end;
+    font-size: 3rem;
+    background-color: rgb(245, 181, 181);
 }
 
 .digits {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 180px;
-    max-height: 240px;
-    background-color: inherit;
+    width: 80%;
 }
 
-.operators {
-    display: flex;
-    flex-direction: column;
-}
-
-.equal-and-clear-buttons {
-    display: flex;
-}
-
-#multiplication, #addition, #subtraction, #division {
-    background-color: magenta;
-    
+.digits button {
+    width: 32%;
+    height: 4rem;
+    margin: 0;
 }
 
 #zero {
-    width: 120px;
-    text-align: start;
+    width: 66%;
+}
+
+.operators {
+    width: 20%;
+}
+
+.operators button {
+    width: 100%;
+    height: 4rem;
+}
+
+.equal-and-clear-buttons {
+    width: 100%;
 }
 
 #equal {
-    width: 180px;
-    background-color: coral;
+    width: 79%;
+    height: 4rem;
 }
 
 #clear {
-    background-color: rgb(173, 32, 32);
-    color: white;
+    width: 19%;
+    height: 4rem;
 }
