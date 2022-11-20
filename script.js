@@ -1,86 +1,128 @@
-let firstNumber;
-let secondNumber;
-let operator;
-let displayed = "";
-
-
 const display = document.querySelector("#display");
+const resultScreen = document.querySelector("#result-screen");
+
 const digits = document.querySelector(".digits");
-const buttons = document.querySelectorAll("button");
-const operators = document.querySelector(".operators");
-const clear = document.querySelector("#clear");
+const multiplybtn = document.querySelector("#multiplication");
+const addbtn = document.querySelector("#addition");
+const subtractbtn = document.querySelector("#subtraction");
+const dividebtn = document.querySelector("#division");
 
-function add(firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+let newArray = [];
+let numberOnDisplay;
+
+let defaultResult = 0;
+let currentResult = defaultResult;
+
+multiplybtn.addEventListener("click", function(event) {
+  newArray.push(multiply, numberOnDisplay);
+  numberOnDisplay = "";
+  display.innerHTML = "";
+});
+
+// addbtn.addEventListener("click", function(event) {
+//   newArray.push(add, numberOnDisplay);
+//   numberOnDisplay = "";
+//   display.innerHTML = "";
+// })
+
+function showResult(value) {
+  resultScreen.innerHTML = value;
 }
 
-function subtract(firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
+addbtn.addEventListener("click", add);
+
+function add() {
+  const enteredNumber = numberOnDisplay;
+  // alert(enteredNumber);
+  let initialResult = currentResult;
+  // console.log("this is " + initialResult);
+  currentResult += enteredNumber;
+  // numberOnDisplay = "";
+  display.innerHTML = "";
+  // console.log(currentResult);
+  initialResult = currentResult;
+  // console.log("this is " + initialResult);
+  showResult(initialResult);
+  // console.log(resultScreen.innerHTML);
+  initialResult = resultScreen.innerHTML;
+  // alert(initialResult);
 }
 
-function divide(firstNumber, secondNumber) {
-    if (secondNumber == 0) {
-        return "ERROR!";
-    } else {
-        return firstNumber / secondNumber;
-    }
-    
-}
-
-function multiply(firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
-}
-
-function operate(operator, firstNumber, secondNumber) {
-    if (operator == add) {
-        return add(firstNumber, secondNumber);
-    } else if (operator == subtract) {
-        return subtract(firstNumber, secondNumber)
-    } else if (operator == multiply) {
-        return multiply(firstNumber, secondNumber);
-    } else if (operator == divide) {
-        return divide(firstNumber, secondNumber);
-    }
-}
-
-
-digits.addEventListener("click", function(event) {
-    displayed += `${event.target.innerText}`;
-    display.innerText = displayed;
+subtractbtn.addEventListener("click", function(event) {
+  newArray.push(subtract, numberOnDisplay);
+  numberOnDisplay = "";
+  display.innerHTML = "";
 })
 
-operators.addEventListener("click", function(event) {
-        if (event.target.id == "addition") {
-            operator = add;
-            firstNumber = +displayed;
-            displayed = "";
-        } else if (event.target.id == "subtraction") {
-            operator = subtract;
-            firstNumber = displayed;
-            displayed = "";
-        } else if (event.target.id == "multiplication") {
-            operator = multiply;
-            firstNumber = displayed;
-            displayed = "";
-        } else if (event.target.id == "division") {
-            operator = divide;
-            firstNumber = displayed;
-            displayed = "";
-        };
-    })
 
+dividebtn.addEventListener("click", function(event) {
+  newArray.push(divide, numberOnDisplay);
+  numberOnDisplay = "";
+  display.innerHTML = "";
+})
 
-    
+digits.addEventListener("click", function (event) {
+  numberOnDisplay = +(display.innerHTML += `${event.target.innerHTML}`);
+  numberOnDisplay = +numberOnDisplay;
+  display.innerHTML = numberOnDisplay;
+  return numberOnDisplay;
+});
+
+function multiply(num1, num2) {
+  let result = num1 * num2;
+  return result;
+}
+
+// function add(num1, num2) {
+//     let result = num1 + num2;
+//     return result;
+// }
+
+function subtract(num1, num2) {
+    let result = num1 - num2;
+    return result;
+}
+
+function divide(num1, num2) {
+    if (num2 == 0) {
+    return "ERROR!";
+}   else {
+    let result = num1 / num2;
+    return result;
+}
+}
+
+function operate(operator, num1, num2) {
+    if (operator == add) {
+        return add(num1, num2);
+    } else if (operator == subtract) {
+        return subtract(num1, num2);
+    } else if (operator == multiply) {
+        return multiply(num1, num2);
+    } else if (operator == divide) {
+        return divide(num1, num2);
+    }
+}
+
 equal.addEventListener("click", function(event) {
-    secondNumber = +displayed;
-    display.innerHTML = operate(operator, firstNumber, secondNumber);
-    displayed = display.innerHTML;
-    
+    newArray.push(numberOnDisplay);
+    let operator = newArray[0];
+    let num1 = newArray[1];    
+    let num2 = newArray[2];
+    // display.innerHTML = operate(operator, num1, num2);
+    // currentResult = +display.innerHTML;
+    let totalResult = operate(operator, num1, num2)
+    showResult(totalResult);
+    currentResult = totalResult;
+    display.innerHTML = "";
+
 })
 
 function defaultDisplay() {
     display.innerText = "0";
-    displayed = "";
+    resultScreen.innerHTML = "";
+    currentResult = 0;
+    newArray.length = 0;
 }
 
 clear.addEventListener("click", defaultDisplay);
