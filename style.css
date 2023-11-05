@@ -1,73 +1,79 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin-top: 30%;
+  margin-top: 30%;
 }
 
 #container {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    width: 95vw;
-}
-
-#display {
-    width: 100%;
-    height: 4rem;
-    padding-right: 0.3rem;
-    text-align: end;
-    font-size: 3rem;
-    background-color: #f5b5b5;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(auto-fill, 4rem);
+  grid-template-areas:
+    "result result result result"
+    "display display display display"
+    "digits digits digits operators"
+    "equal equal equal clear";
 }
 
 #result-screen {
-    width: 100%;
-    height: 4rem;
-    padding-right: 0.3rem;
-    text-align: end;
-    font-size: 3rem;
-    color: white;
-    background-color: #033003;
+  text-align: end;
+  font-size: 3rem;
+  color: white;
+  background-color: #033003;
+  grid-area: result;
+}
+
+#display {
+  width: 100%;
+  height: 4rem;
+  padding-right: 0.3rem;
+  text-align: end;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  background-color: #f5b5b5;
+  grid-area: display;
 }
 
 .digits {
-    width: 75%;
-    font-size: 0;
+  font-size: 0;
+  grid-area: digits;
 }
 
 .digits button {
-    width: 33.3%;
-    height: 4rem;
-    margin: 0;
+  width: 33.3%;
+  height: 4rem;
+  margin: 0;
 }
 
 #zero {
-    width: 66.6%;
+  width: 66.6%;
 }
 
 .operators {
-    width: 25%;
-    font-size: 0;
+  font-size: 0;
+  grid-area: operators;
 }
 
 .operators button {
-    width: 100%;
-    height: 4rem;
+  width: 100%;
+  height: 4rem;
 }
 
 .equal-and-clear-buttons {
-    width: 100%;
-    font-size: 0;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  font-size: 0;
 }
 
 #equal {
-    width: 75%;
-    height: 4rem;
+  width: 75%;
+  height: 4rem;
 }
 
 #clear {
-    width: 25%;
-    height: 4rem;
+  width: 25%;
+  height: 4rem;
 }
